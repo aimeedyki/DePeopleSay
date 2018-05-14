@@ -1,0 +1,11 @@
+{
+  "name": "depeoplesay",
+  "version": "1.0.0",
+  "description": "a fun srvey app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "aimeedyki",
+  "license": "ISC"
+}
