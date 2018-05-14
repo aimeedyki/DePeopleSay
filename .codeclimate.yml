@@ -1,0 +1,13 @@
+engines:
+  eslint:
+      enabled: true
+      channel: beta
+      config: eslintrc.json
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+checks:
+  method-lines:
+    enabled: false

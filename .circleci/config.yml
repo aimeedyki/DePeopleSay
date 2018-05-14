@@ -1,0 +1,27 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: circleci/node:9.3.0
+       - image: mongo:3.4.4
+     steps:
+       - checkout
+       # Download and cache dependencies
+       - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+       - run:
+          name: install dependencies
+          command: npm install
+       - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+       - run:
+          name: run tests
+          command: npm test
+      #  - run:
+      #     name: run coverage
+      #     command: npm coverage
