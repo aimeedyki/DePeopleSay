@@ -3,14 +3,53 @@ import bcrypt from 'bcrypt-nodejs';
 
 
 const UserSchema = new Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true
+  local: {
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+      sparse: true
+    },
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+      sparse: true
+    },
+    password: {
+      type: String,
+      required: true
+    }
   },
-  password: {
-    type: String,
-    required: true
+  facebook: {
+    id: {
+      type: String,
+      unique: true,
+      sparse: true
+    },
+    token: String,
+    name: String,
+    email: String
+  },
+  twitter: {
+    id: {
+      type: String,
+      unique: true,
+      sparse: true
+    },
+    token: String,
+    displayName: String,
+    username: String
+  },
+  google: {
+    id: {
+      type: String,
+      unique: true,
+      sparse: true
+    },
+    token: String,
+    email: String,
+    name: String
   }
 });
 
@@ -18,16 +57,16 @@ const UserSchema = new Schema({
 UserSchema.pre('save', function (next) {
   const user = this;
 
-  if (this.isModified('password') || this.isNew) {
+  if (user.local.isModified('password') || user.local.isNew) {
     bcrypt.genSalt(10, (error, salt) => {
       if (error) {
         return next(error);
       }
-      bcrypt.hash(user.password, salt, null, (err, hash) => {
+      bcrypt.hash(user.local.password, salt, null, (err, hash) => {
         if (err) {
           return next(err);
         }
-        user.password = hash;
+        user.local.password = hash;
         next();
       });
     });
@@ -36,16 +75,7 @@ UserSchema.pre('save', function (next) {
   }
 });
 
-// UserSchema.methods.comparePassword = (password, cb) => {
-//   bcrypt.compare(password, this.password, (error, isMatch) => {
-//     if (error) {
-//       return cb(error);
-//     }
-//     cb(null, isMatch);
-//   });
-// };
-
-UserSchema.methods.isPasswordValid = (password) => {
+UserSchema.methods.isPasswordValid = function (password) {
   const user = this;
   return bcrypt.compareSync(password, this.local.password);
 };
