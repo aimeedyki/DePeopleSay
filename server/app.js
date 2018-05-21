@@ -19,12 +19,8 @@ const env = process.env.NODE_ENV || 'development';
 
 // mongoose connection
 mongoose.connect(databaseConfig[env])
-  .then(connection => {
-    console.log('Connected to MongoDB')
-  })
-  .catch(error => {
-    console.log(`mongoDB connection error ${error.message}, env is ${env}`)
-  })
+  .then(connection => console.log('Connected to MongoDB'))
+  .catch(error => console.log(`mongoDB error ${error.message}, env is ${env}`));
 
 // initialize passport
 app.use(passport.initialize());
@@ -37,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api/v1', serverRoutes);
 
 app.listen(port, () => {
-  console.log(`app is running on port ${port}`)
+  console.log(`app is running on port ${port}`);
 });
 
 export default app;
