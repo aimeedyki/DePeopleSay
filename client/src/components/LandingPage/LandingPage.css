@@ -1,0 +1,69 @@
+.landing-background * {
+  position: relative;
+}
+.landing-background {
+  background: url('../../assets/landing-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+@media screen and (max-width: 768px) {
+  .landing-background {
+      background: #666e8f;
+  }
+}
+.landing-overlay:before {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display: block;
+  background: rgba(57, 64, 96, 0.8);
+}
+.landing-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5rem;
+  color: white;
+}
+
+.signin {
+ height: 3.5rem;
+ margin-top: 1.6rem;
+ color: white;
+ background-color: transparent;
+ border-color: white;
+ font-size: 1.5rem;
+}
+
+.landing-body {
+  margin-top: 25rem;
+}
+
+.start {
+  background-color: #FFD50D;
+  color: white;
+  font-size: 2rem;
+}
+
+.social {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.google-social, .facebook-social {
+  margin-right: 1rem;
+}
