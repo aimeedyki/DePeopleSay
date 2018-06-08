@@ -1,7 +1,7 @@
 engines:
   eslint:
       enabled: true
-      channel: beta
+      channel: eslint-4
       config: eslintrc.json
   duplication:
     enabled: true
