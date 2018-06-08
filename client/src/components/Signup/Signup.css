@@ -1,0 +1,22 @@
+.signup-modal {
+  margin: 15rem auto;
+}
+
+.form-group .form-control{
+ background-color: #FAFFBD;
+}
+
+.help-block {
+  color: beige;
+}
+@media (min-width: 768px) {
+  .signup-modal {
+    width: 50rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-modal {
+      margin: 25% 10%;
+  }
+} 

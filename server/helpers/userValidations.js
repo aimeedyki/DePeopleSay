@@ -9,9 +9,9 @@ import formValidator from './formValidator';
  */
 export const signupValidation = (form) => {
   const signupSchema = Joi.object().keys({
-    username: Joi.string().alphanum().min(3).max(30)
+    username: Joi.string().min(3).max(30)
       .required(),
-    password: Joi.string().trim().required(),
+    password: Joi.string().trim().min(6).required(),
     email: Joi.string().trim().email().required(),
   });
 
