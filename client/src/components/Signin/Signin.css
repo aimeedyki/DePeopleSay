@@ -1,0 +1,15 @@
+.signin-modal {
+  margin: 25rem auto;
+}
+
+ @media (min-width: 768px) {
+  .signin-modal {
+    width: 50rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .signin-modal {
+      margin: 45% 10%;
+  }
+} 

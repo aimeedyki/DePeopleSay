@@ -50,10 +50,20 @@
   margin-top: 25rem;
 }
 
+.signin:hover, .signin:focus {
+  background-color: #394060;
+  color: #FAFFBD;
+}
+
 .start {
-  background-color: #FFD50D;
-  color: white;
+  background-color: #394060;
+  color: #FAFFBD;
   font-size: 2rem;
+}
+
+.start:hover, .start:focus {
+  background-color: #FAFFBD;
+  color: #394060;
 }
 
 .social {

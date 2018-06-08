@@ -1,0 +1,23 @@
+.modal-footer button.btn-default {
+  background-color: #394060 !important;
+  color: #FAFFBD !important;
+  font-size: 1.8rem;
+}
+
+.modal-header button.close {
+  color: #FAFFBD !important;
+}
+
+.modal-content {
+  background-color: #666e8f !important;
+}
+
+.common-modal {
+  color: white !important;
+}
+
+ @media (min-width: 768px) {
+  .common-modal {
+    width: 50rem;
+  }
+}
