@@ -14,7 +14,6 @@ export const signupValidation = (form) => {
     password: Joi.string().trim().min(6).required(),
     email: Joi.string().trim().email().required(),
   });
-
   return formValidator(form, signupSchema);
 };
 
