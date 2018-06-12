@@ -83,7 +83,7 @@ UserSchema.methods.isPasswordValid = function (password) {
 // Omit the password when returning a user
 UserSchema.set('toJSON', {
   transform: (doc, ret) => {
-    delete ret.password;
+    delete ret.local.password;
     return ret;
   }
 });

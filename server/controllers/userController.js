@@ -59,7 +59,7 @@ export default {
       });
     } else {
       res.status(400).json({
-        success: 'fail',
+        success: false,
         message: signupValidation(req.body).message
       });
     }
@@ -107,7 +107,7 @@ export default {
       });
     } else {
       res.status(400).json({
-        success: 'fail',
+        success: false,
         message: signupValidation(req.body).message
       });
     }
