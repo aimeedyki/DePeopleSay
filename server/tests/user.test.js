@@ -1,8 +1,10 @@
 import supertest from 'supertest';
 import { assert } from 'chai';
 import faker from 'faker';
+import mongoose from 'mongoose';
 
 import app from '../app';
+import databaseConfig from '../config/databaseConfig';
 
 require('dotenv').config();
 
@@ -12,6 +14,13 @@ let token = '';
 
 /* eslint-disable prefer-destructuring */
 describe('User', () => {
+  before((done) => {
+    mongoose.connect(databaseConfig.test, () => {
+      mongoose.connection.db.dropDatabase(() => {
+        done();
+      });
+    });
+  });
   it('should return 201 when a regular user is created', (done) => {
     server.post('/api/v1/signup')
       .send({
@@ -23,6 +32,10 @@ describe('User', () => {
         assert.equal(res.status, 201);
         token = res.body.token;
         assert.isNotNull(res.body.User);
+        assert.deepEqual(res.body.user.local, {
+          email: 'test@gmail.com',
+          username: 'test'
+        });
         done();
       });
   });
@@ -74,11 +87,15 @@ describe('User', () => {
   it('should return 200 signin is successful', (done) => {
     server.post('/api/v1/signin')
       .send({
-        username: 'tester',
+        username: 'test',
         password: 'people',
       })
       .end((err, res) => {
-        assert.equal(res.status, 404);
+        assert.equal(res.status, 200);
+        assert.deepEqual(res.body.user.local, {
+          email: 'test@gmail.com',
+          username: 'test'
+        });
         done();
       });
   });

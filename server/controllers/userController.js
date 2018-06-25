@@ -1,13 +1,9 @@
 import jwt from 'jsonwebtoken';
-import passport from 'passport';
 
 import databaseConfig from '../config/databaseConfig';
 import getUserToken from '../helpers/getUserToken';
 import User from '../models/user';
 import { signupValidation, signinValidation } from '../helpers/userValidations';
-
-require('../config/passport')(passport);
-require('dotenv').config();
 
 export default {
   /** @description signs up a user
@@ -65,7 +61,7 @@ export default {
     }
   },
 
-  /** @description signs up a user
+  /** @description signs in a user
    *
    * @param {object} req HTTP request object
    * @param {object} res HTTP response object
