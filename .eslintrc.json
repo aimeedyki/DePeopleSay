@@ -54,15 +54,6 @@
         "requireReturnDescription": true
       }
     ],
-    "require-jsdoc": [
-      "error",
-      {
-        "require": {
-          "FunctionDeclaration": true,
-          "MethodDefinition": true,
-          "ClassDeclaration": true
-        }
-      }
-    ]
+    "object-curly-spacing": ["error", "always"]
   }
 }

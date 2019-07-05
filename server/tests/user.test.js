@@ -14,13 +14,6 @@ let token = '';
 
 /* eslint-disable prefer-destructuring */
 describe('User', () => {
-  before((done) => {
-    mongoose.connect(databaseConfig.test, () => {
-      mongoose.connection.db.dropDatabase(() => {
-        done();
-      });
-    });
-  });
   it('should return 201 when a regular user is created', (done) => {
     server.post('/api/v1/signup')
       .send({

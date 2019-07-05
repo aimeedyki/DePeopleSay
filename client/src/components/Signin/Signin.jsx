@@ -6,6 +6,7 @@ import {
   HelpBlock,
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import CommonModal from '../../common/CommonModal/CommonModal';
 import { signinValidator } from '../../utils/signinValidation';
@@ -14,18 +15,7 @@ import './Signin.css';
 
 import { signinUser } from '../../actions/authAction';
 
-/**
- *
- * @returns {JSX} JSX
- * @class Signin
- * @extends {Component}
- */
 class Signin extends Component {
-  /**
-   * Creates an instance of Signin.
-   * @param {any} props
-   * @memberof Signin
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -37,41 +27,32 @@ class Signin extends Component {
       error: {},
     };
   }
-  /**
-   * @returns {null} null
-   * @memberof Signin
-   */
+
   componentDidMount() {
     this.setState({
       showModal: this.props.showModal
     });
   }
-  /**
-   * @param {Object} nextProps the next properties
-   * @returns {null} null
-   * @memberof Signin
-   */
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       showModal: nextProps.showModal
     });
   }
-  /** Closes the modal
-   * @returns {*} null
-   * @memberof Signin
-   */
+
   handleClose = () => {
     this.setState({
       showModal: false
     });
     this.props.hideModal('showSigninForm');
+    this.props.history.push('/home');
   }
 
   handleSubmit = () => {
     if (signinValidator(this.state.formDetails).isValid) {
       this.props.signinUser(this.state.formDetails);
-      // this.handleClose();
-      console.log('valid', this.state.formDetails);
+      this.handleClose();
+      // console.log('valid', this.state.formDetails);
     } else {
       this.setState({ error: signinValidator(this.state.formDetails).error });
     }
@@ -153,4 +134,4 @@ const mapStateToProps = state => ({
   errorMessage: state.authReducer.error
 });
 
-export default connect(mapStateToProps, { signinUser })(Signin);
+export default connect(mapStateToProps, { signinUser })(withRouter(Signin));

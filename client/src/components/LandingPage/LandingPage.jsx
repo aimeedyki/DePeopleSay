@@ -7,18 +7,8 @@ import Signup from '../Signup/Signup';
 import GoogleLogo from '../../assets/google-logo.svg';
 import FacebookLogo from '../../assets/Facebook__logo.svg';
 import TwitterLogo from '../../assets/Twitter_Icon.svg';
-/**
- *
- * @returns {JSX} JSX
- * @class LandingPage
- * @extends {Component}
- */
+
 class LandingPage extends Component {
-  /**
-   * Creates an instance of LandingPage.
-   * @param {any} props
-   * @memberof LandingPage
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -38,21 +28,13 @@ class LandingPage extends Component {
       showSignupForm: true
     });
   }
-  /**
-   * @param {string} form form name
-   * @returns {JSX} JSX
-   * @memberof LandingPage
-   */
+
   hideModal = (form) => {
     this.setState({
       [form]: false
     });
   }
 
-  /**
-   * @returns {JSX} JSX
-   * @memberof LandingPage
-   */
   render() {
     return (
       <div className="container-fluid landing-overlay landing-background">
@@ -64,7 +46,7 @@ class LandingPage extends Component {
           showModal={this.state.showSignupForm}
           hideModal={this.hideModal}
         />
-        <div className="">
+        <div>
           <div className="landing-header">
             <h1 className="brand-name">Opinipoll</h1>
             <Button className="signin" onClick={this.showSigninModal}>
