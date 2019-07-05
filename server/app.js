@@ -18,7 +18,7 @@ const port = process.env.PORT || 5000;
 const env = process.env.NODE_ENV || 'development';
 
 // mongoose connection
-mongoose.connect(databaseConfig[env])
+mongoose.connect(databaseConfig[env], { useNewUrlParser: true })
   .then(connection => console.log('Connected to MongoDB'))
   .catch(error => console.log(`mongoDB error ${error.message}, env is ${env}`));
 

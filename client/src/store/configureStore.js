@@ -14,7 +14,8 @@ const ConfigureStore = initialState => createStore(
   initialState,
   compose(
     applyMiddleware(reduxThunk),
-    window.devToolsExtension ? window.devToolsExtension() : r => r
+    window.__REDUX_DEVTOOLS_EXTENSION__ ?
+      window.__REDUX_DEVTOOLS_EXTENSION__() : r => r
   )
 );
 

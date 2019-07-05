@@ -13,18 +13,7 @@ import { signupValidator } from '../../utils/signupValidation';
 
 import { signupUser } from '../../actions/authAction';
 
-/**
- *
- * @returns {JSX} JSX
- * @class Signup
- * @extends {Component}
- */
 class Signup extends Component {
-  /**
-   * Creates an instance of Signup.
-   * @param {any} props
-   * @memberof Signup
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -38,34 +27,25 @@ class Signup extends Component {
       },
     };
   }
-  /**
-   * @returns {null} null
-   * @memberof Signup
-   */
+
   componentDidMount() {
     this.setState({
       showModal: this.props.showModal
     });
   }
-  /**
-   * @param {Object} nextProps the next properties
-   * @returns {null} null
-   * @memberof Signup
-   */
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       showModal: nextProps.showModal
     });
   }
-  /** Closes the modal
-   * @returns {*} null
-   * @memberof Signup
-   */
+
   handleClose = () => {
     this.setState({
       showModal: false
     });
     this.props.hideModal('showSignupForm');
+    this.props.history.push('/home');
   }
 
   passwordConfirmation = () => {
@@ -104,12 +84,7 @@ class Signup extends Component {
       this.showPasswordError();
     }
   }
-  /** @description sets changed field to state
-   *
-   * @returns {*} null
-   * @param {object} event
-   * @memberof Signup
-   */
+
   handleChange = (event) => {
     this.setState({
       formDetails: {
@@ -204,11 +179,6 @@ class Signup extends Component {
   }
 }
 
-/** @description connect the state from the store to the component props
- *
- * @param {object} state
- * @returns {string} error message
- */
 const mapStateToProps = state => ({
   errorMessage: state.authReducer.error
 });

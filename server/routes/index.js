@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import userController from '../controllers/userController';
+import { userController } from '../controllers';
 
 const app = express();
 

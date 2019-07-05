@@ -1,12 +1,16 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
+import Home from '../Home';
 
 const App = () => (
   <div className="App">
-    <Route path='/' component={LandingPage} />
+    <Switch>
+      <Route path='/home' component={Home} />
+      <Route path='/' component={LandingPage} />
+    </Switch>
   </div>
 );
 
