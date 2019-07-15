@@ -36,7 +36,7 @@ export default {
         });
 
         // save the user
-        newUser.save((err) => {
+        newUser.save((err, savedUser) => {
           if (err) {
             return res.status(500).json({
               success: false,
@@ -48,7 +48,7 @@ export default {
           return res.status(201).json({
             success: true,
             message: 'Successful created new user',
-            user: newUser,
+            user: savedUser,
             token
           });
         });

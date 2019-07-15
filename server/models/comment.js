@@ -5,7 +5,7 @@ const CommentSchema = new Schema({
     type: String,
     sparse: true
   },
-  surveyId: [{ type: Schema.Types.ObjectId, ref: 'survey' }],
+  pollId: [{ type: Schema.Types.ObjectId, ref: 'Poll' }],
   likeCount: {
     type: Number,
     default: 0
