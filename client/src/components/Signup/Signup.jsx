@@ -6,6 +6,7 @@ import {
   HelpBlock,
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import CommonModal from '../../common/CommonModal/CommonModal';
 import './Signup.css';
@@ -183,4 +184,4 @@ const mapStateToProps = state => ({
   errorMessage: state.authReducer.error
 });
 
-export default connect(mapStateToProps, { signupUser })(Signup);
+export default connect(mapStateToProps, { signupUser })(withRouter(Signup));

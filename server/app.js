@@ -18,8 +18,16 @@ const port = process.env.PORT || 5000;
 const env = process.env.NODE_ENV || 'development';
 
 // mongoose connection
-mongoose.connect(databaseConfig[env], { useNewUrlParser: true })
-  .then(connection => console.log('Connected to MongoDB'))
+mongoose.connect(databaseConfig[env], {
+  useCreateIndex: true,
+  useNewUrlParser: true
+})
+  .then((connection) => {
+    if (env === 'test') {
+      mongoose.connection.db.dropDatabase();
+    }
+    console.log('Connected to MongoDB');
+  })
   .catch(error => console.log(`mongoDB error ${error.message}, env is ${env}`));
 
 // initialize passport
