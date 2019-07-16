@@ -38,6 +38,7 @@
     "supertest": "^3.1.0"
   },
   "devDependencies": {
+    "chai-subset": "^1.6.0",
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.4"
   }
