@@ -1,11 +1,15 @@
-.modal-footer button.btn-default {
-  background-color: #394060 !important;
-  color: #FAFFBD !important;
-  font-size: 1.8rem;
+.common-modal-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.common-modal-header::before, .common-modal-header::after { 
+  content: none;
 }
 
 .modal-header button.close {
-  color: #FAFFBD !important;
+  color: #f4ff71 !important;
 }
 
 .modal-content {
@@ -14,6 +18,19 @@
 
 .common-modal {
   color: white !important;
+}
+
+.cta-button {
+  background-color: #394060;
+  color: #FAFFBD;
+  border-color: #FAFFBD;
+  font-size: 1.8rem;
+}
+
+.cta-button:hover, .cta-button:focus {
+  background-color: #FAFFBD;
+  color: #394060;
+  border-color: #394060;
 }
 
  @media (min-width: 768px) {

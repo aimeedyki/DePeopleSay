@@ -37,11 +37,13 @@ export const signupUser = ({ email, password, username }) => (
           type: AUTH_SUCCESS,
           payload: response.data.user.local
         });
+
+        return true;
       })
       .catch((error) => {
         dispatch({
           type: AUTH_ERROR,
-          payload: error.message
+          payload: error.response.data.message
         });
       });
   }
@@ -62,11 +64,13 @@ export const signinUser = ({ username, password }) => (
           type: AUTH_SUCCESS,
           payload: response.data.user.local
         });
+
+        return true;
       })
       .catch((error) => {
         dispatch({
           type: AUTH_ERROR,
-          payload: error.message
+          payload: error.response.data.message
         });
       })
   )

@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  ControlLabel,
-  FormGroup,
-  FormControl,
-  HelpBlock,
-} from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -45,24 +40,21 @@ class Signin extends Component {
       showModal: false
     });
     this.props.hideModal('showSigninForm');
-    this.props.history.push('/home');
   }
 
   handleSubmit = () => {
     if (signinValidator(this.state.formDetails).isValid) {
-      this.props.signinUser(this.state.formDetails);
-      this.handleClose();
-      // console.log('valid', this.state.formDetails);
+      this.props.signinUser(this.state.formDetails).then((response) => {
+        if (response) {
+          this.handleClose();
+          this.props.history.push('/home');
+        }
+      });
     } else {
       this.setState({ error: signinValidator(this.state.formDetails).error });
     }
   }
-  /** @description sets changed field to state
-   *
-   * @returns {*} null
-   * @param {object} event
-   * @memberof Signin
-   */
+
   handleChange = (event) => {
     this.setState({
       formDetails: {
@@ -71,46 +63,50 @@ class Signin extends Component {
       }
     });
   }
-  /**
-   * @returns {JSX} JSX
-   * @memberof Signin
-   */
+
   render() {
     const { password, username } = this.state.formDetails;
+    const {
+      password: passwordError,
+      username: usernameError
+    } = this.state.error;
+
     const signinForm = (
-      <div>
-        <FormGroup
-          validationState={this.getValidationState}
-        >
-          <ControlLabel>Username</ControlLabel>
-          <FormControl
+      <Form>
+        <Form.Group>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
             name="username"
             onChange={this.handleChange}
             placeholder="Enter username here"
             type="text"
             value={username}
+            isInvalid={!!usernameError}
           />
-          <HelpBlock>
-            {this.state.error.username}
-          </HelpBlock>
-        </FormGroup>
-        <FormGroup
-          validationState={this.getValidationState}
-        >
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
+          <Form.Control.Feedback type="invalid">
+            {usernameError}
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             name="password"
             onChange={this.handleChange}
             placeholder="Enter password here"
             type="password"
             value={password}
+            isInvalid={!!passwordError}
           />
-          <HelpBlock>
-            {this.state.error.password}
-          </HelpBlock>
-        </FormGroup>
-      </div>
+          <Form.Control.Feedback type="invalid">
+            {!!passwordError}
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Control.Feedback type="invalid">
+          {this.props.errorMessage}
+        </Form.Control.Feedback>
+      </Form>
     );
+
     return (
       < CommonModal
         customClass={'signin-modal'}
@@ -125,11 +121,6 @@ class Signin extends Component {
   }
 }
 
-/** connects the state from the store to the component props
- *
- * @param {object} state
- * @returns {string} error message
- */
 const mapStateToProps = state => ({
   errorMessage: state.authReducer.error
 });
