@@ -6,6 +6,10 @@
   height: 100vh;
 }
 
+.create-poll__card {
+  padding: 0;
+}
+
 .create-poll__form {
   background-color: #e8f0fe;
 }
@@ -55,4 +59,14 @@
 
 .create-poll__tab .list-group {
   margin-bottom: 1rem;
+}
+
+.preview__user-details {
+  text-align: left;
+}
+@media only screen and (min-width: 992px) {
+  .create-poll__tab {
+    overflow: scroll;
+    height: 50vh;
+  }
 }
