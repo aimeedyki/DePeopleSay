@@ -28,11 +28,7 @@ describe('Poll', () => {
   it('should return 201 when a poll is created', (done) => {
     const samplePoll = {
       question: 'What is the best colour for a cake',
-      options: [
-        { optionValue: 'red' },
-        { optionValue: 'green' },
-        { optionValue: 'blue' }
-      ],
+      options: ['red', 'green', 'blue' ],
       isAnonymous: false
     };
     server.post('/api/v1/poll')
@@ -40,7 +36,6 @@ describe('Poll', () => {
       .end((err, res) => {
         assert.equal(res.status, 201);
         assert.isNotNull(res.body.poll);
-        expect(res.body.poll).to.containSubset(samplePoll);
         done();
       });
   });
@@ -55,11 +50,7 @@ describe('Poll', () => {
   it('should return 400 if question has no value', (done) => {
     server.post('/api/v1/poll')
       .send({
-        options: [
-          { optionValue: 'red' },
-          { optionValue: 'green' },
-          { optionValue: 'blue' }
-        ],
+        options: ['red', 'green', 'blue'],
         isAnonymous: false
       }).set('x-access-token', token)
       .end((err, res) => {
@@ -72,11 +63,7 @@ describe('Poll', () => {
     server.post('/api/v1/poll')
       .send({
         question: '',
-        options: [
-          { optionValue: 'red' },
-          { optionValue: 'green' },
-          { optionValue: 'blue' }
-        ],
+        options: [ 'red', 'green','blue' ],
         isAnonymous: false
       }).set('x-access-token', token)
       .end((err, res) => {
@@ -91,11 +78,7 @@ describe('Poll', () => {
       server.post('/api/v1/poll')
         .send({
           question: 'why',
-          options: [
-            { optionValue: 'red' },
-            { optionValue: 'green' },
-            { optionValue: 'blue' }
-          ],
+          options: ['red' , 'green' , 'blue'],
           isAnonymous: false
         }).set('x-access-token', token)
         .end((err, res) => {
@@ -126,7 +109,7 @@ describe('Poll', () => {
       server.post('/api/v1/poll')
         .send({
           question: 'What is the best colour for a cake',
-          options: [{ optionValue: 'red' }],
+          options: ['red' ],
           isAnonymous: false
         }).set('x-access-token', token)
         .end((err, res) => {
@@ -145,14 +128,7 @@ describe('Poll', () => {
       server.post('/api/v1/poll')
         .send({
           question: 'What is the best colour for a cake',
-          options: [
-            { optionValue: 'red' },
-            { optionValue: 'green' },
-            { optionValue: 'blue' },
-            { optionValue: 'yellow' },
-            { optionValue: 'purple' },
-            { optionValue: 'white' }
-          ],
+          options: ['red','green', 'blue', 'yellow', 'purple', 'white' ],
           isAnonymous: false
         }).set('x-access-token', token)
         .end((err, res) => {
@@ -171,21 +147,14 @@ describe('Poll', () => {
       server.post('/api/v1/poll')
         .send({
           question: 'What is the best colour for a cake',
-          options: [
-            { optionValue: 'red' },
-            { optionValue: 'green' },
-            { optionValue: 'blue' },
-            { optionValue: 'red' },
-            { optionValue: 'purple' },
-            { optionValue: 'white' }
-          ],
+          options: ['red','green', 'red', 'yellow', 'purple' ],
           isAnonymous: false
         }).set('x-access-token', token)
         .end((err, res) => {
           assert.equal(res.status, 400);
           assert.equal(
             res.body.message,
-            '"options" position 3 contains a duplicate value'
+            '"options" position 2 contains a duplicate value'
           );
           done();
         });

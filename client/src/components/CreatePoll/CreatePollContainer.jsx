@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { createPoll } from '../../actions/pollAction';
 import { replaceArrayItem } from '../../utils/replaceArrayItem';
 
 const CreatePollContainer = (props) => {
@@ -12,8 +15,9 @@ const CreatePollContainer = (props) => {
   const [errorMessages, setErrorMessage] = useState({ genericError: '' });
 
   const handleSubmit = () => {
-    // Submit logic to be written when actions and reducers have been
-    console.log('submit', poll);
+    if (options.length >= 2) {
+      props.createPoll(poll, options);
+    } 
   };
 
   const handleChange = (event) => {
@@ -63,4 +67,10 @@ const CreatePollContainer = (props) => {
   );
 };
 
-export default CreatePollContainer;
+const mapStateToProps = (state) => {
+  const { creatingPoll: loading, error } = state.pollReducer;
+
+  return { loading, error };
+};
+
+export default connect(mapStateToProps, { createPoll })(CreatePollContainer);

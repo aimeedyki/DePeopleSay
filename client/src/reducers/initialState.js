@@ -5,4 +5,9 @@ export default {
     authLoading: false,
     userDetails: {},
   },
+  newPoll: {
+    creatingPoll: false,
+    error: ''
+  },
+  polls: []
 };

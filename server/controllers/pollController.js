@@ -7,9 +7,14 @@ export default {
     if (createPollValidation(req.body).isValid) {
       const { question, options, isAnonymous } = req.body;
       const { userId } = req.decoded;
+
+      const formatedOptions = [];
+      
+      options.map((option) => formatedOptions.push({optionValue: option}))
+      
       const newPoll = new Poll({
         question,
-        options,
+        options: formatedOptions,
         createdBy: userId,
         isAnonymous
       });
