@@ -1,10 +1,8 @@
 import supertest from 'supertest';
 import { assert } from 'chai';
 import faker from 'faker';
-import mongoose from 'mongoose';
 
 import app from '../app';
-import databaseConfig from '../config/databaseConfig';
 
 require('dotenv').config();
 

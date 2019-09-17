@@ -1,3 +1,4 @@
 import userController from './userController';
+import pollController from './pollController';
 
-export { userController };
+export { userController, pollController };

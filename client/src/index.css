@@ -3,3 +3,35 @@ body {
   padding: 0;
   font-family: 'Lato', sans-serif;
 }
+
+/* common styles  */
+.is-invalid {
+  border-color: #7f0000;
+}
+
+.invalid-feedback {
+  color: #7f0000;
+}
+
+.form-group .form-control{
+  background-color: #FAFFBD;
+ }
+ 
+ .form-group .form-control:focus{
+   border-color: #394060;
+  }
+
+  .tab-content {
+    padding-top: 1rem;
+    background-color: #e8f0fe;
+  }
+
+  .card-header {
+    background-color: #394060;
+    color: white;
+  }
+
+  .card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }

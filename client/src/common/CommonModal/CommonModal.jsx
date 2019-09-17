@@ -7,15 +7,21 @@ const commonModal = props => (
     dialogClassName={`common-modal ${props.customClass}`}
     onHide={props.close}
     show={props.show}
+    style={{ opacity: 1 }}
   >
-    <Modal.Header closeButton>
+    <Modal.Header className="common-modal-header" closeButton>
       <Modal.Title>{props.title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       {props.content}
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={props.ctAction}>{props.ctaTitle}</Button>
+      <Button
+        className="cta-button"
+        onClick={props.ctAction}
+      >
+        {props.ctaTitle}
+      </Button>
     </Modal.Footer>
   </Modal>
 );

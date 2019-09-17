@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import {
-  ControlLabel,
-  FormGroup,
-  FormControl,
-  HelpBlock,
-} from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import CommonModal from '../../common/CommonModal/CommonModal';
 import './Signup.css';
@@ -17,7 +13,7 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: {},
+      errors: {},
       showModal: false,
       formDetails: {
         confirmPassword: '',
@@ -45,7 +41,6 @@ class Signup extends Component {
       showModal: false
     });
     this.props.hideModal('showSignupForm');
-    this.props.history.push('/home');
   }
 
   passwordConfirmation = () => {
@@ -58,8 +53,8 @@ class Signup extends Component {
 
   showPasswordError = () => {
     this.setState({
-      error: {
-        ...this.state.error,
+      errors: {
+        ...this.state.errors,
         password: 'Passwords do not match, please re-confirm'
       }
     });
@@ -68,7 +63,7 @@ class Signup extends Component {
   validateSignupForm = () => {
     const validationError = signupValidator(this.state.formDetails);
     if (Object.keys(validationError).length !== 0) {
-      this.setState({ error: validationError });
+      this.setState({ errors: validationError });
       return false;
     }
     return true;
@@ -77,8 +72,13 @@ class Signup extends Component {
   handleSubmit = () => {
     if (this.passwordConfirmation()) {
       if (this.validateSignupForm()) {
-        this.props.signupUser(this.state.formDetails);
-        this.handleClose();
+        this.props.signupUser(this.state.formDetails)
+          .then((response) => {
+            if (response) {
+              this.handleClose();
+              this.props.history.push('/home');
+            }
+          });
       }
     } else {
       this.showPasswordError();
@@ -101,70 +101,76 @@ class Signup extends Component {
     const {
       confirmPassword, email, password, username
     } = this.state.formDetails;
+    const {
+      email: emailError,
+      username: userNameError,
+      password: passwordError
+    } = this.state.errors;
+
     const signupForm = (
       <div>
-        <FormGroup
-          validationState={this.getValidationState}
-        >
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
+        <Form.Group>
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             name="email"
             onChange={this.handleChange}
             placeholder="E.g example@yahoo.com"
             type="text"
             value={email}
+            isInvalid={!!emailError}
           />
-          <HelpBlock>
-            {this.state.error.email}
-          </HelpBlock>
-        </FormGroup>
-        <FormGroup
-          validationState={this.getValidationState}
-        >
-          <ControlLabel>Username</ControlLabel>
-          <FormControl
+          <Form.Control.Feedback type="invalid">
+            {emailError}
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
             name="username"
             onChange={this.handleChange}
             placeholder="Username must be 3 characters or more"
             type="text"
             value={username}
+            isInvalid={!!userNameError}
           />
-          <HelpBlock>
-            {this.state.error.username}
-          </HelpBlock>
-        </FormGroup>
-        <FormGroup
-          validationState={this.getValidationState}
-        >
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
+          <Form.Control.Feedback type="invalid">
+            {userNameError}
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             name="password"
             onChange={this.handleChange}
             placeholder="Password must be more than 6 characters"
             type="password"
             value={password}
+            isInvalid={!!passwordError}
           />
-          <HelpBlock>
-            {this.state.error.password}
-          </HelpBlock>
-        </FormGroup>
-        <FormGroup
-          validationState={this.getValidationState}
-        >
-          <ControlLabel>Confirm password</ControlLabel>
-          <FormControl
+          <Form.Control.Feedback type="invalid">
+            {passwordError}
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Confirm password</Form.Label>
+          <Form.Control
             name="confirmPassword"
             onChange={this.handleChange}
             placeholder="Re-enter password here"
             type="password"
             value={confirmPassword}
+            isInvalid={!!passwordError}
           />
-          <HelpBlock>
-            {this.state.error.password}
-          </HelpBlock>
-        </FormGroup>
+          <Form.Control.Feedback type="invalid">
+            {passwordError}
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Control.Feedback type="invalid">
+            {this.props.errorMessage}
+          </Form.Control.Feedback>
       </div>
     );
+
     return (
       <CommonModal
         customClass={'signup-modal'}
@@ -183,4 +189,4 @@ const mapStateToProps = state => ({
   errorMessage: state.authReducer.error
 });
 
-export default connect(mapStateToProps, { signupUser })(Signup);
+export default connect(mapStateToProps, { signupUser })(withRouter(Signup));

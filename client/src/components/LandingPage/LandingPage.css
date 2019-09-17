@@ -34,7 +34,7 @@
   color: white;
 }
 
-.signin {
+.sign-in {
  height: 3.5rem;
  margin-top: 1.6rem;
  color: white;
@@ -47,28 +47,42 @@
   margin-top: 25rem;
 }
 
-.signin:hover, .signin:focus {
+.sign-in:hover, .sign-in:focus, .social-button:hover, .social-button:focus {
   background-color: #394060;
   color: #FAFFBD;
+  border-color: #FAFFBD;
 }
 
 .start {
   background-color: #394060;
   color: #FAFFBD;
+  border-color: #FAFFBD;
   font-size: 2rem;
 }
 
 .start:hover, .start:focus {
   background-color: #FAFFBD;
   color: #394060;
+  border-color: #394060;
 }
 
-.social {
+.social-buttons {
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+}
+
+.facebook-logo {
+  background-color: white;
+  border-radius: 0.4rem;
+}
+
+.social-button {
+  color: white;
+  background-color: transparent;
+  border-color: white;
 }
 
 .google-social, .facebook-social {

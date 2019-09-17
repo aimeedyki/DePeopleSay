@@ -49,7 +49,7 @@ class LandingPage extends Component {
         <div>
           <div className="landing-header">
             <h1 className="brand-name">Opinipoll</h1>
-            <Button className="signin" onClick={this.showSigninModal}>
+            <Button className="sign-in" onClick={this.showSigninModal}>
               Sign in
             </Button>
           </div>
@@ -58,15 +58,15 @@ class LandingPage extends Component {
             <Button className="start" onClick={this.showSignupModal}>
               Get started
             </Button>
-            <div className="social">
-              <Button className="google-social">
-                <Image src={GoogleLogo} responsive />
+            <div className="social-buttons">
+              <Button className="google-social social-button">
+                <Image src={GoogleLogo} />
               </Button>
-              <Button className="facebook-social">
-                <Image src={FacebookLogo} responsive />
+              <Button className="facebook-social social-button">
+                <Image src={FacebookLogo} className="facebook-logo" />
               </Button>
-              <Button>
-                <Image src={TwitterLogo} responsive />
+              <Button className="social-button">
+                <Image src={TwitterLogo} />
               </Button>
             </div>
           </div>
