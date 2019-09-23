@@ -37,37 +37,39 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div className="container-fluid landing-overlay landing-background">
-        <Signin
-          showModal={this.state.showSigninForm}
-          hideModal={this.hideModal}
-        />
-        <Signup
-          showModal={this.state.showSignupForm}
-          hideModal={this.hideModal}
-        />
-        <div>
-          <div className="landing-header">
-            <h1 className="brand-name">Opinipoll</h1>
-            <Button className="sign-in" onClick={this.showSigninModal}>
-              Sign in
+      <div className="landing__background">
+        <div className="landing__overlay container-fluid">
+          <Signin
+            showModal={this.state.showSigninForm}
+            hideModal={this.hideModal}
+          />
+          <Signup
+            showModal={this.state.showSignupForm}
+            hideModal={this.hideModal}
+          />
+          <div>
+            <div className="landing__header">
+              <h1 className="brand-name">Opinipoll</h1>
+              <Button className="sign-in" onClick={this.showSigninModal}>
+                Sign in
             </Button>
-          </div>
-          <div className="landing-body">
-            <h2>Take and create fun opinion polls</h2>
-            <Button className="start" onClick={this.showSignupModal}>
-              Get started
+            </div>
+            <div className="landing__body">
+              <h2>Take and create fun opinion polls</h2>
+              <Button className="start-button" onClick={this.showSignupModal}>
+                Get started
             </Button>
-            <div className="social-buttons">
-              <Button className="google-social social-button">
-                <Image src={GoogleLogo} />
-              </Button>
-              <Button className="facebook-social social-button">
-                <Image src={FacebookLogo} className="facebook-logo" />
-              </Button>
-              <Button className="social-button">
-                <Image src={TwitterLogo} />
-              </Button>
+              <div className="social-buttons">
+                <Button className="google-social social-button">
+                  <Image src={GoogleLogo} />
+                </Button>
+                <Button className="facebook-social social-button">
+                  <Image src={FacebookLogo} className="facebook-logo" />
+                </Button>
+                <Button className="social-button">
+                  <Image src={TwitterLogo} />
+                </Button>
+              </div>
             </div>
           </div>
         </div>

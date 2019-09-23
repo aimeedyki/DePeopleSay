@@ -5,9 +5,6 @@ import { withRouter } from 'react-router-dom';
 
 import CommonModal from '../../common/CommonModal/CommonModal';
 import { signinValidator } from '../../utils/signinValidation';
-import './Signin.css';
-
-
 import { signinUser } from '../../actions/authAction';
 
 class Signin extends Component {

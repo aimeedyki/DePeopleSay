@@ -8,6 +8,7 @@ const commonModal = props => (
     onHide={props.close}
     show={props.show}
     style={{ opacity: 1 }}
+    centered
   >
     <Modal.Header className="common-modal-header" closeButton>
       <Modal.Title>{props.title}</Modal.Title>
