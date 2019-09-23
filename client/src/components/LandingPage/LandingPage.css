@@ -92,8 +92,8 @@
   margin-right: 1rem;
 }
 
-@media screen and (max-width: 768px) {
-  .landing-background {
+@media (max-width: 768px) {
+  .landing__background {
       background: #666e8f;
   }
 }

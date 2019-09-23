@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import CommonModal from '../../common/CommonModal/CommonModal';
-import './Signup.css';
 import { signupValidator } from '../../utils/signupValidation';
 
 import { signupUser } from '../../actions/authAction';
