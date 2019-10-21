@@ -21,17 +21,16 @@ body {
    border-color: #394060;
   }
 
-  .tab-content {
-    padding-top: 1rem;
-    background-color: #e8f0fe;
-  }
+.tab-content {
+  background-color: #e8f0fe;
+}
 
-  .card-header {
-    background-color: #394060;
-    color: white;
-  }
+.card-header {
+  background-color: #394060;
+  color: white;
+}
 
-  .card-body {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
+.card-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
