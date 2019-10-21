@@ -22,11 +22,11 @@ const CreatePollComponent = ({
   handleOptionChange,
   handleSubmit
 }) => (
-    <Container className="create-poll">
-      <Row className="justify-content-md-center">
+    <Container className="">
+      <Row className="justify-content-md-center create-poll">
         <Tab.Container id="left-tabs-example" defaultActiveKey="edit">
           <Col xs={12} md={8} lg={5} className="create-poll__card">
-            <Card className="text-center">
+            <Card className="text-center cud">
               <Card.Header>
                 <h4>Create a new poll</h4>
                 <Nav
@@ -63,20 +63,20 @@ const CreatePollComponent = ({
                     />
                   </Tab.Pane>
                 </Tab.Content>
-                <Row className="d-flex flex-column">
-                  <Button
-                    className="create-poll__submit-button"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                </Button>
-                </Row>
               </Card.Body>
+              <Row className="d-flex flex-column">
+                <Button
+                  className="create-poll__submit-button"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
+              </Row>
             </Card>
           </Col>
         </Tab.Container>
       </Row>
     </Container>
-);
+  );
 
 export default CreatePollComponent;

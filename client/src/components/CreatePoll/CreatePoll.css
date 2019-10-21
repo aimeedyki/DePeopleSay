@@ -2,10 +2,6 @@
   margin-bottom: 1rem;
 }
 
-.create-poll {
-  height: 100vh;
-}
-
 .create-poll__card {
   padding: 0;
 }
@@ -40,7 +36,7 @@
 }
 
 .create-poll__submit-button {
-  margin: 1rem -0.4rem 0 -0.4rem;
+  margin: 0 0.9rem;
   background-color: #394060;
   color: #e8f0fe;
   border: none;
@@ -57,6 +53,10 @@
   border: 0.1875rem solid #e8f0fe;
 }
 
+.create-poll__tab {
+  padding-top: 1rem;
+}
+
 .create-poll__tab .list-group {
   margin-bottom: 1rem;
 }
@@ -68,5 +68,25 @@
   .create-poll__tab {
     overflow: scroll;
     height: 50vh;
+  }
+}
+
+@media (max-width: 420px) {
+  .create-poll, .create-poll__card, .cud {
+    height: 100%;
+  }
+
+  .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .create-poll__tab {
+    width: 95%;
+  }
+
+  .create-poll__submit-button {
+    margin: 0;
   }
 }

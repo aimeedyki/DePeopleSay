@@ -2,3 +2,16 @@
   position: relative;
   text-align: center;
 }
+
+.app__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+}
+
+@media (max-width: 420px) {
+  .app__container {
+    align-items: stretch;
+  }
+}
