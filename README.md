@@ -2,4 +2,4 @@
 [![CircleCI](https://circleci.com/gh/aimeedyki/DePeopleSay/tree/develop.svg?style=svg)](https://circleci.com/gh/aimeedyki/DePeopleSay/tree/develop)
 # DePeopleSay
 A fun survey app
-![App screenshot](app_image2)
+![App screenshot](app_image2.png)
