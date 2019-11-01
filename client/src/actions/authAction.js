@@ -27,7 +27,7 @@ export const signupUser = ({ email, password, username }) => (
   (dispatch) => {
     dispatch({ type: AUTH_START });
     return axios.post(
-      'http://localhost:5000/api/v1/signup',
+      '/api/v1/signup',
       { email, password, username }
     )
       .then((response) => {
@@ -56,7 +56,7 @@ export const signupUser = ({ email, password, username }) => (
  */
 export const signinUser = ({ username, password }) => (
   dispatch => (
-    axios.post('http://localhost:5000/api/v1/signin', { username, password })
+    axios.post('/api/v1/signin', { username, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         setAuthorizationToken(response.data.token);

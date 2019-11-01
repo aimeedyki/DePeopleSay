@@ -23,7 +23,7 @@ export const createPoll = ({ question, isAnonymous }, options) => (
   (dispatch) => {
     dispatch(startCreatePoll());
     return axios.post(
-      'http://localhost:5000/api/v1/poll',
+      '/api/v1/poll',
       { question, options, isAnonymous }
     )
       .then((response) => {

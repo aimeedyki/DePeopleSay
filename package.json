@@ -7,7 +7,8 @@
     "test": "NODE_ENV=test mocha server/tests/**/*.test.js --require babel-register --exit",
     "start:server": "nodemon server/app.js --exec babel-node server/app.js",
     "start:client": "cd client && npm start",
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\""
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "heroku-postbuild": "NODE_ENV=production cd client && npm install && npm run build"
   },
   "author": "aimeedyki",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -28,7 +30,7 @@
     "joi": "^13.3.0",
     "jsonwebtoken": "^8.2.1",
     "mocha": "^5.1.1",
-    "mongoose": "^5.6.3",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
@@ -37,7 +39,6 @@
   },
   "devDependencies": {
     "chai-subset": "^1.6.0",
-    "concurrently": "^3.5.1",
     "nodemon": "^1.17.4"
   },
   "browserslist": {
