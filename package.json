@@ -2,6 +2,9 @@
   "name": "depeoplesay",
   "version": "1.0.0",
   "description": "a fun srvey app",
+  "engines": {
+    "node": "12.4.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha server/tests/**/*.test.js --require babel-register --exit",
