@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import path from 'path';
 
 import databaseConfig from './config/databaseConfig';
 import serverRoutes from './routes/index';
@@ -45,6 +46,16 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.resolve(__dirname, '../client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  });
+}
+
 // Require routes into the application.
 app.use('/api/v1', serverRoutes);
 
