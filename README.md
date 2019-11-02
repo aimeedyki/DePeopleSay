@@ -5,6 +5,8 @@
 
 Opinopoly is a fun survey app where people can connect over opinion polls built with Node and React
 
+You can view the deployed application [here](https://opinopoly.herokuapp.com)
+
 ![App screenshot](app_image2.png)
 
 ## Features
@@ -26,7 +28,7 @@ The application has the following features:
 
 You can get the app running locally in the following way:
  - Install NodeJs and MongoDB on your machine
- - Clone the repository `$ git clone` [https://github.com/aimeedyki/DePeopleSay.git]( https://github.com/aimeedyki/DePeopleSay.git)
+ - Clone the repository `$ git clone https://github.com/aimeedyki/DePeopleSay.git`
 - Change into the directory $ cd /DePeopleSay
 - Use `$ npm install cd client && npm install` to install all required dependencies.
 - Create a `.env` file in your root directory and set the 'SECRET' environment variable.
