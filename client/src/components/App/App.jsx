@@ -6,7 +6,8 @@ import Home from '../Home';
 import LandingPage from '../LandingPage/LandingPage';
 import CreatePoll from '../CreatePoll';
 import NavBar from '../NavBar';
-
+import routes from '../../routes';
+import ProtectedRoute from '../ProtectedRoute';
 
 const App = () => (
   <div className="App">
@@ -18,14 +19,14 @@ const App = () => (
             <NavBar />
             <div className="app__container">
               <Switch>
-                <Route path='/app/home' component={Home} />
-                <Route path='/app/new-poll' component={CreatePoll} />
+                <ProtectedRoute path={routes.home} component={Home} />
+                <ProtectedRoute path={routes.newPoll} component={CreatePoll} />
               </Switch>
             </div>
           </React.Fragment>
         )}
       />
-      <Route path='/' component={LandingPage} />
+      <Route path={routes.landingPage} component={LandingPage} />
     </Switch>
   </div>
 );

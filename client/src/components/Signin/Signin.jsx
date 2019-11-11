@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import CommonModal from '../../common/CommonModal/CommonModal';
 import { signinValidator } from '../../utils/signinValidation';
 import { signinUser } from '../../actions/authAction';
+import routes from '../../routes';
 
 class Signin extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class Signin extends Component {
       this.props.signinUser(this.state.formDetails).then((response) => {
         if (response) {
           this.handleClose();
-          this.props.history.push('/home');
+          this.props.history.push(routes.home);
         }
       });
     } else {
