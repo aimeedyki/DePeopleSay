@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 import CommonModal from '../../common/CommonModal/CommonModal';
 import { signupValidator } from '../../utils/signupValidation';
-
 import { signupUser } from '../../actions/authAction';
+import routes from '../../routes';
 
 class Signup extends Component {
   constructor(props) {
@@ -75,7 +75,7 @@ class Signup extends Component {
           .then((response) => {
             if (response) {
               this.handleClose();
-              this.props.history.push('/home');
+              this.props.history.push(routes.home);
             }
           });
       }
